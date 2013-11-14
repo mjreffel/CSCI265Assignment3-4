@@ -1,0 +1,72 @@
+INTRODUCTION
+
+This directory contains the KWIC (KeyWord In Context) system.  KWIC was
+inspired by the 1972 paper that introduced the term "information
+hiding":
+
+	D. L. Parnas, "On the Criteria to be used for decomposing
+	systems into modules", Commun. ACM, 15(12):1053-1058, December
+	1972.
+
+Reading this paper will make the KWIC behavior and design much
+easier to understand.
+
+At the University of Victoria, we have used KWIC in three offerings of
+CSc 265---Software Engineering I.  It has provided us with a useful
+vehicle for teaching the design, specification, inspection, and
+automated testing of modular systems based on information hiding.  We
+use KWIC to teach both methodology and the use of software tools,
+including make, dbx, tcov, and prof.
+
+KWIC is by no means flawless and we welcome bug reports and suggestions
+for improvement.
+
+Send email to:
+
+	Dan Hoffman dhoffman@csc.uvic.ca
+	Nigel Horspool nigelh@csc.uvic.ca
+
+DIRECTORY ROADMAP
+
+	kwic/
+		include
+			one header file for the KWIC system and
+			one for each KWIC module
+		Makefile
+			commands for compiling and testing the KWIC system
+		functionalSpec.html
+			A brief description of the input, command-line arguments
+			and output provided by the KWIC system.
+		moduleGuide.html
+			For each module, a brief description of the
+			service offered and the information-hiding secret.
+		main.c
+			the C main function for the KWIC system
+		input/
+			input files for testing the KWIC system
+		expectedOutput/
+			output expected from a correct KWIC implementation
+		actualOutput/
+			output actually produced by the most recent test run
+		noiseWords
+			default noiseWords file
+		one directory for each of the five KWIC modules:
+			Input, LineStorage, WordTable, ShiftSort, Output
+
+	for each M in {Input, LineStorage, WordTable, ShiftSort, Output}
+		kwic/M/ does contain:
+			Makefile
+			M.c
+			driver.c
+		kwic/M/ may contain:
+			input/
+				input files for testing M
+			expectedOutput
+				directory or data file containing the output
+				expected from a correct implementation of M
+			actualOutput
+				directory or data file containing the output
+				the output actually produced by the most
+				recent test run
+			test stubs for modules called by M
+			assorted data files

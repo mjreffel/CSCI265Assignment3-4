@@ -1,0 +1,73 @@
+<html>
+<title> KWIC Module Guide</title>
+<body>
+
+<h1>KWIC Module Guide</h1>
+
+<h2>Input Module</h2>
+<dl>
+<dt>Service</dt>
+	<dd>
+	Reads a sequence of lines from a file or <code>stdin</code>
+	and loads them into the LineStorage module.
+	</dd>
+<dt>Encapsulated change</dt>
+	<dd>
+	The format of the input.
+	</dd>
+</dl>
+
+<h2>LineStorage Module</h2>
+<dl>
+<dt>Service</dt>
+	<dd>
+	Stores a list of lines, where each line is a list of C strings.
+	</dd>
+<dt>Encapsulated change</dt>
+	<dd>
+	The algorithm and data structure used to store and access the lines.
+	</dd>
+</dl>
+
+<h2>WordTable Module</h2>
+<dl>
+<dt>Service</dt>
+	<dd>
+	Reads a list of words from a file and allows the
+	user to check whether a given word is in this list.
+	</dd>
+<dt>Encapsulated change</dt>
+	<dd>
+	The algorithm and data structure used to store and search for the words.
+	</dd>
+</dl>
+
+<h2>ShiftSort Module</h2>
+<dl>
+<dt>Service</dt>
+	<dd>
+	Computes a shifted and sorted version of the lines
+	stored in the LineStorage module.
+	</dd>
+<dt>Encapsulated change</dt>
+	<dd>
+	The algorithm and data structure used to generate, store, sort,
+	and access the shifted lines words.
+	</dd>
+</dl>
+
+<h2>Output Module</h2>
+<dl>
+<dt>Service</dt>
+	<dd>
+	Formats and writes the lines provided by the ShiftSort
+	module to <code>stdout</code>.
+	</dd>
+<dt>Encapsulated change</dt>
+	<dd>
+	The format of the output.
+	</dd>
+</dl>
+
+</body>
+</html>
