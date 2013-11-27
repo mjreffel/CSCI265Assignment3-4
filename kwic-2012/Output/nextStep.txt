@@ -1,0 +1,6 @@
+1. store the string until the comma this should be stored in a string called second 
+2. make sure to add spaces to them 
+3. after the comma store the raining word in string called first
+		separated by spaces 
+4. know the length of the first string
+5. know the length of the key word. 
