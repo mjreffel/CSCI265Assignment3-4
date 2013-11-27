@@ -21,11 +21,13 @@ static struct {
 	{5,4,"Hat","The","Cat","in","the"},
 	{4,3,"Language","The","C","Programming"},
 	{4,2,"Programming","Language","The","C"},
-	{4,0,"The","C","Programming","Language"},
-	{5,0,"The","Cat","in","the","Hat"},
-	{5,2,"in","the","Hat","The","Cat"},
-	{5,3,"the","Hat","The","Cat","in"}
+	
 };
+
+//{4,0,"The","C","Programming","Language"},
+//	{5,0,"The","Cat","in","the","Hat"},
+//	{5,2,"in","the","Hat","The","Cat"},
+//	{5,3,"the","Hat","The","Cat","in"}
 
 /***** exported functions *****/
 
