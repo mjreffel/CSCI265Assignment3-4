@@ -86,6 +86,54 @@ void OUPrint(void)
 
 
 
+define(cew_Variables,
+         `my $cew_Test_Count=0;
+          my $cew_Error_Count=0;'
+)
+
+define(cew_Summary,
+         `print("\n**********Summary**********\n");
+          print("Total number of test cases = ", $cew_Test_Count, "\n");
+          print("Total number of test cases in error = ", $cew_Error_Count, "\n");'
+)
+
+
+
+
+
+define(cew_Ncase,
+          `$cew_Test_Count=$cew_Test_Count+1;
+          $2 ;
+          if (($3) $5 ($4)) {
+             $cew_Error_Count=$cew_Error_Count+1;
+             print("Test Case ERROR (Ncase) in script at line number ", $1, "\n");
+             print("Actual Value is ", $3, " \n");
+             print("Expected Value is ", $4, "\n");
+          }'
+)
+
+
+/calculating length of all words before the key word
+                /*int fCharCount = 0;
+                for (b = 0; b < f; b++) {
+                 	for(a = 0; first[b]; a++)
+               		 {
+               		 	const char * tmpF = first[b];
+                		if(tmpF[b] != ' '){
+                			fCharCount++;
+                		}
+                		fCharCount++;
+                }*/
+                
+       //         printf ("%d\n", fCharCount);
+                
+                
+                //const char * tmpFirst = first[0]
+              //  for (a = 0; a < f; a++)
+                	//const char * tmpFirst = first[a];
+
+
+
      for (k = 0; k < numWords; k++ ) {
                  printf("%s", tmpString[k]);
                  if (j != SSNumWords(i)-1){
