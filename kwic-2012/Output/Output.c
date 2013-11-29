@@ -4,7 +4,8 @@
 #include "kwic.h"
 #include "Output.h"
 #include "ShiftSort.h"
-
+#include <string.h>
+#include <stdlib.h>
 /***** local constants *****/
 
 /***** local types *****/
@@ -13,25 +14,28 @@
 
 void OUInit(void)
 {
-	/* intentionally empty */
+        /* intentionally empty */
 }
 
 void OUPrint(void)
 {
     int i,j,k,w,h,a,b,c,e;
     int d = 0;
-    const char * tmpString[10];
-    const char * Fword[10];
-    const char * second[10];
-	const char * first[10];
-	int f = 0;
-    int s = 0;
-    int kw = 0;
     
-    // char * second;
-
+    // need to move it inside the loop and initialize it to length of num words 
+    // when done, delete the contant of the array and resize it. 
+    const char * tmpString[5];
+    const char * Fword;
+    const char * second[5];
+    const char * first[5];
+      
         for (i = 0; i < SSNumLines(); i++) {
-        int fCharCount = 0;
+          int f = 0;
+    	  int s = 0;
+          int kw = 0;
+          int Fcount = 0; 
+          int Kcount = 0;
+          int Scount = 0;
                 int numWords = SSNumWords(i);
                 for (j = 0; j < numWords; j++) {
                         int shiftNum = SSGetShiftNum(i);
@@ -41,104 +45,58 @@ void OUPrint(void)
                
                 for(d=0; d<numWords; d++)
                 {
-               	 	if(d == 0){
-                		Fword[kw] = tmpString[d];
-                	}
-                	
-                	if(d <= numWords - SSGetShiftNum(i) - 1 && d !=0) {
-                		second[s] = tmpString[d];
-                		s++; 
-                	}
-                	
-                	if(d > numWords - SSGetShiftNum(i) - 1){
-                	
-                	/***********Calculating length of first**********/
-                		const char * tmpF = tmpString[d];
-                		for(a = 0; tmpF[a]; a++)
-               		 	{
-               		 		
-                			if(tmpF[a] != ' '){
-                				fCharCount++;
-                			}
-                		
-                		}
-                		first[f] = tmpF;
-                		f++;
-                		fCharCount++;
-                	}               	
-                } 
-                
-                
-                /*******print first*******/
-                
-                
-               for ( w = 0; w < f; w++) {
-              printf ("%s ", first[w]);
-              }
-              
-                
-                
-                //calculating length of all words before the key word
-                /*int fCharCount = 0;
-                for (b = 0; b < f; b++) {
-                 	for(a = 0; first[b]; a++)
-               		 {
-               		 	const char * tmpF = first[b];
-                		if(tmpF[b] != ' '){
-                			fCharCount++;
-                		}
-                		fCharCount++;
-                }*/
-                
-       //         printf ("%d\n", fCharCount);
-                
-                
-                //const char * tmpFirst = first[0]
-              //  for (a = 0; a < f; a++)
-                	//const char * tmpFirst = first[a];
-               		
-                
-                
-            	/**********print k word********/
-                printf("%s ", Fword[0]);
-                
-                //***********calculating key word length************
-                
-                const char * tmpKeyWord = Fword[0];
-                
-                int kwCharCount = 0;
-                
-                for(h = 0; tmpKeyWord[h]; h++)
-                {
-                if(tmpKeyWord[h] != ' ')
-                	kwCharCount++;
-                }
-                
-                /*******printing length of key word******/
-    //            printf("%d\n", kwCharCount);
-                
-                /**********print second***********/ 
-                for ( k = 0; k < s; k++ ){
-                printf("%s ", second[k]);
-                }      
-                printf("\n"); 
-                
-                
-                //**********printing number of spaces**********
-                for(  c = 0; c < fCharCount; c++)
-                {
-                	printf(" ");
-                }
+                int sizeOffirst = 0;
+                                if(d == 0){
+                                Fword = tmpString[d];
                                 
-                //**********printing number of underscores********
+                        }
+                        
+                        if(d <= numWords - SSGetShiftNum(i) - 1 && d !=0) {
+                                second[s] = tmpString[d];
+                                s++; 
+                        }
+                        
+                        if(d > numWords - SSGetShiftNum(i) - 1){
+                                first[f] = tmpString[d];
+                                f++;
+                	} 
                 
-               // for( e = 0; e<kwCharCount; e++)
-               // {
-                	//printf("-");
-             //   }
+                }
+               
+            for (h = 0; h < f; h++) { 
+            int len = strlen(first[h]);
+  				
+  				Fcount = Fcount + len +1;
+            	printf("%s ", first[h]);
+            }
+             Kcount = strlen(Fword); 
+            printf("%s ", Fword);
+               
+            for (e = 0; e < s; e++) {
+            
+            int Slen = strlen(second[e]);
+            Scount = Scount + Slen;
+               printf("%s ", second[e]);
+            }
+        /*************/
                 printf("\n");
-        	        	
+                
+              for (b = 0; b < Fcount; b++){
+                printf(" ");
+                }
+               // printf(" ");
+                for (c =0; c < Kcount; c++){
+                printf("-");
+                }
+                for (a=0; a < Scount; a++){
+                printf(" ");
+                }
+                printf("\n");
+     //   printf(" :beforeKey: %d\n", Fcount);
+       // printf(" :Key: %d\n", Kcount);   
+       // printf(" :after: %d\n", Scount); 
+                               
         }
-        
+          
        
 }
