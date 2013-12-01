@@ -6,6 +6,7 @@
 #include "ShiftSort.h"
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 /***** local constants *****/
 
 /***** local types *****/
@@ -24,11 +25,12 @@ void OUPrint(void)
     
     // need to move it inside the loop and initialize it to length of num words 
     // when done, delete the contant of the array and resize it. 
-    const char * tmpString[5];
+    const char * tmpString[80];
     const char * Fword;
-    const char * second[5];
-    const char * first[5];
-      
+    const char * second[80];
+    const char * first[80];
+    clock_t cstart = clock();
+  	clock_t cend = 0;
         for (i = 0; i < SSNumLines(); i++) {
           int f = 0;
     	  int s = 0;
@@ -98,5 +100,6 @@ void OUPrint(void)
                                
         }
           
-       
+       cend = clock();
+       printf ("%.3f cpu sec\n", ((double)cend - (double)cstart)* 1.0e-6);
 }
