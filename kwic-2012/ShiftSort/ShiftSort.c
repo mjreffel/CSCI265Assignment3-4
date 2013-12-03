@@ -5,7 +5,7 @@
 #include "kwic.h"
 #include "LineStorage.h"
 #include "ShiftSort.h"
-
+#include <time.h>
 /***** local constants *****/
 
 /***** local types *****/
@@ -41,10 +41,12 @@ static int lineCount;
 /* return word wordNum from the shifted LineStorage line specified by linePtr */
 static const char* getWord(LineListPtr linePtr,int wordNum)
 {
+
         int shiftedWordNum;
 
         shiftedWordNum = (wordNum+linePtr->shiftNum) %
 		LSNumWords(linePtr->lineNum);
+		
         return LSGetWord(linePtr->lineNum,shiftedWordNum);
 }
 
@@ -91,6 +93,8 @@ void SSReset(void)
 
 KWStatus SSShiftSort(void)
 {
+clock_t cstart = clock();
+  	clock_t cend = 0;
         int i,j,k;
 
         /* compute the size of lineList */
@@ -126,7 +130,8 @@ KWStatus SSShiftSort(void)
         /* sort the shifted lines */
         qsort(lineList,lineCount,sizeof(LineList),
                 (int (*)(const void *, const void *))lineCompare);
-
+cend = clock();
+//printf ("%.3f Shift cpu sec\n", ((double)cend - (double)cstart)* 1.0e-6);
         return KWSUCCESS;
 }
 
